@@ -42,6 +42,14 @@
 				return $query->result();
 
 			}
+
+			public function studentListInfo()
+			{
+				$this->db->select('*');
+				$this->db->from('student');
+				$query = $this->db->get();
+				return $query->result();
+			}
 		    
 		    public function get_acknoledgement()
 		    {
@@ -106,11 +114,10 @@
 
 				$participant_id ='';
 				$query = $this->db->query( "SELECT MAX(participant_id)+1 as Mvalue FROM student" );		
-				foreach ($query->result() as $participant_id) {
-					$participant_id.=$participant_id->Mvalue;
+				foreach ($query->result() as $participant_idd) {
+					$participant_id.=$participant_idd->Mvalue;
 				}
-				$participant_id.=$participant_id->Mvalue;
-
+				$participant_id;
 				$data = array(
 					// 'registration_no' 			=> $this->input->post( 'registration_no' ),
 					'student_name' 				=> $this->input->post( 'student_name' ),

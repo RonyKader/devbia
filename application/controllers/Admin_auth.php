@@ -42,10 +42,7 @@ class Admin_auth extends CI_Controller {
 	public function userlist()
 	{
 		$this->load->model( 'auth_model' );
-		$data['userlistData'] = $this->auth_model->userlist();
-
-
-		
+		$data['userlistData'] = $this->auth_model->userlist();		
 		$data['userlist'] = 'userlist_page';
 		$this->load->view( 'layouts/main', $data );	
 	}

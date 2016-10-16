@@ -29,21 +29,21 @@
                                 </thead>
                                 <tbody>
                                  <?php 
-                                    if ( $userlistData ) 
+                                    if ( $studentlistData ) 
                                     {   $i = 0;
-                                        foreach ($userlistData as $alluser ) 
+                                        foreach ($studentlistData as $allstudent ) 
                                         {
                                             $i++;
                                         ?>
                                         <tr class="gradeX">
                                             <td><?php echo $i;?></td>
-                                            <td> <?php echo $alluser->user_fullname; ?></td>
-                                            <td class="center hidden-phone"><?php echo $alluser->username;?></td>
-                                            <td class="center hidden-phone"><?php echo $alluser->user_emailaddress;?></td>
-                                            <td class="center hidden-phone"><?php echo $alluser->present_address;?></td>
+                                            <td> <?php echo $allstudent->student_name; ?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->father_name;?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->email;?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->emergency_contact_name;?></td>
                                             <td>Active</td>
-                                            <td><a href="<?php echo base_url();?>admin_auth/edituser_box/<?php echo $alluser->id_user;?>"> Edit</a> 
-                                            | <a href="<?php echo base_url();?>admin_auth/delete_user/<?php echo $alluser->id_user;?>" onclick="return confirm('Are you sure want to delete ?')";>Delete</a></td>
+                                            <td><a href="<?php echo base_url();?>registration/edituser_box/<?php echo $allstudent->id;?>"> Edit</a> 
+                                            | <a href="<?php echo base_url();?>registration/delete_user/<?php echo $allstudent->id;?>" onclick="return confirm('Are you sure want to delete ?')";>Delete</a></td>
                                         </tr>
                                         <?php    
                                         }

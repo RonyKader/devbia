@@ -39,6 +39,7 @@ class Registration extends CI_Controller
 
 		public function process_registration()
 		{
+			$this->form_validation->set_error_delimiters($this->alert->dmStart(),$this->alert->dmEnd());
 			$this->form_validation->set_rules( 'student_name', 'Participant Name', 'trim|required|max_length[100]');
 			$this->form_validation->set_rules( 'father_name', 'Father\'s Name', 'trim|required|max_length[100]');
 			$this->form_validation->set_rules( 'mother_name', 'Mother\'s Name', 'trim|required|max_length[100]');
@@ -65,21 +66,30 @@ class Registration extends CI_Controller
 			$this->form_validation->set_rules( 'nationality', 'nationality', 'trim|required|max_length[100]');
 			$this->form_validation->set_rules( 'nationalid', 'nationalid', 'trim|required|max_length[100]');
 			
-			// $this->form_validation->set_rules( 'address', 'address', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'district_code', 'district_code', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'upzilla_code', 'upzilla_code', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'address_type', 'address_type', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'post_code', 'post_code', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'exam_id', 'exam_id', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'university', 'university', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'group', 'group', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'result', 'result', 'trim|required|max_length[100]');
-			// $this->form_validation->set_rules( 'gpa', 'gpa', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'address[]', 'address', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'district_code[]', 'district_code', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'upzilla_code[]', 'upzilla_code', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'address_type[]', 'address_type', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'post_code[]', 'post_code', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'exam_id[]', 'exam_id', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'university[]', 'university', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'group[]', 'group', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'result[]', 'result', 'trim|required|max_length[100]');
+			$this->form_validation->set_rules( 'gpa[]', 'gpa', 'trim|required|max_length[100]');
 
 			if ( $this->form_validation->run() == FALSE ) 
 			{
+				$this->load->model( 'registration_model' );
+				$data['course_name'] 		  = $this->registration_model->get_course();
+				$data['designation_name'] 	  = $this->registration_model->get_designation();
+				$data['district_info'] 		  = $this->registration_model->get_district();
+				$data['upzilla_info'] 		  = $this->registration_model->get_upzilla();		
+				$data['nationality_info'] 	  = $this->registration_model->get_nationality();		
+				$data['educationlevel_info']  = $this->registration_model->get_educationlevel();		
+				$data['university_info'] 	  = $this->registration_model->get_university();		
+				$data['sponsoredby_info'] 	  = $this->registration_model->get_sponsoredby();		
 				$data['student_regestration'] = 'student_regestration';
-				$this->load->view( 'layouts/main',$data );
+				$this->load->view('layouts/main', $data );
 			}
 			else
 			{
@@ -87,16 +97,24 @@ class Registration extends CI_Controller
 				$data = $this->registration_model->registration_process();
 				if ( $data ) 
 				{	
-					$this->session->set_flashdata( 'success', 'Thank you for registration.' );
-					redirect( 'registration/acknoledgement' );
+					$this->session->set_flashdata( 'FlsMsg', $this->alert->success( 'Thank you for registration.' ));
+					redirect( 'registration' );
 				}
 				else
 				{
-					$this->session->set_flashdata( 'Fail', 'Your Registration Process is Fail' );
-					redirect( 'registration/registration' );
+					$this->session->set_flashdata( 'FlsMsg', $this->alert->danger( 'Your Registration Process is Fail' ));
+					redirect( 'registration' );
 				}
 			}
 
+		}
+
+		public function studentList()
+		{
+			$this->load->model( 'Registration_model' );
+			$data['studentlistData'] = $this->Registration_model->studentListInfo();		
+			$data['studentlist'] = 'studentlist_page';
+			$this->load->view( 'layouts/main', $data );	
 		}
 
 		public function acknoledgement()

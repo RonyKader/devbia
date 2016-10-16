@@ -32,7 +32,9 @@
 
 		public function userlist()
 		{
-			$query = $this->db->get( 'users' );
+			$this->db->select('*');
+			$this->db->from('users');
+			$query = $this->db->get();
 			return $query->result();
 		}
 

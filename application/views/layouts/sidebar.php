@@ -16,6 +16,7 @@
                 <ul class="sub">
                     <li><a href="<?php echo base_url();?>admin_auth/userlist">User List Don't open</a></li>                    
                     <li><a href="<?php echo base_url();?>registration">Registration</a></li>                    
+                    <li><a href="<?php echo base_url();?>registration/studentList">Student List</a></li>                    
                 </ul>
             </li>
 <!--             <li class="sub-menu">

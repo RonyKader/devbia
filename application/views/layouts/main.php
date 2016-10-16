@@ -23,6 +23,9 @@ if ( isset( $access ))
 	<?php if ( isset( $acknoledgement ) ): ?>
 		<?php $this->load->view( $acknoledgement ); ?>
 	<?php endif ?>
+	<?php if ( isset( $studentlist ) ): ?>
+		<?php $this->load->view( $studentlist ); ?>
+	<?php endif ?>
 
 	<?php $this->load->view( 'layouts/footer' );?>	
 
