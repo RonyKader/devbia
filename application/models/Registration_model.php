@@ -45,10 +45,33 @@
 
 			public function studentListInfo()
 			{
-				$this->db->select('*');
-				$this->db->from('student');
+				$this->db->select('st.*,ad.*,edq.*');
+				$this->db->from('student AS st');
+				$this->db->join('address AS ad','st.participant_id=ad.participant_id');
+				$this->db->join('educational_qualification AS edq','st.participant_id = edq.participant_id');
 				$query = $this->db->get();
 				return $query->result();
+			}
+
+			public function disttInfo()
+			{
+				$this->db->select('ddu.*,add.district_code');
+				$this->db->from('division_dist_upzilla AS ddu');
+				$this->db->join('address AS add','ddu.district_code = add.district_code');
+				$query = $this->db->get();
+				return $query->result();
+			}
+
+			public function get_indivisualstData( $id )
+			{
+				$this->db->select('student.*,address.*,educational_qualification.*');
+				$this->db->from('student');
+				$this->db->join('address','student.participant_id=address.participant_id');
+				$this->db->join('educational_qualification','student.participant_id=educational_qualification.participant_id');
+				$this->db->where( array( 'student.participant_id' => $id));
+				$query = $this->db->get();
+				return $query->result();
+
 			}
 		    
 		    public function get_acknoledgement()

@@ -113,8 +113,27 @@ class Registration extends CI_Controller
 		{
 			$this->load->model( 'Registration_model' );
 			$data['studentlistData'] = $this->Registration_model->studentListInfo();		
+			$data['disttData'] = $this->Registration_model->disttInfo();
 			$data['studentlist'] = 'studentlist_page';
 			$this->load->view( 'layouts/main', $data );	
+		}
+
+		public function studentUpdate_form( $id )
+		{
+			$this->load->model( 'Registration_model' );
+			$data['course_name'] 		  = $this->Registration_model->get_course();
+			$data['designation_name'] 	  = $this->Registration_model->get_designation();
+			$data['district_info'] 		  = $this->Registration_model->get_district();
+			$data['upzilla_info'] 		  = $this->Registration_model->get_upzilla();		
+			$data['nationality_info'] 	  = $this->Registration_model->get_nationality();		
+			$data['educationlevel_info']  = $this->Registration_model->get_educationlevel();		
+			$data['university_info'] 	  = $this->Registration_model->get_university();		
+			$data['sponsoredby_info'] 	  = $this->Registration_model->get_sponsoredby();	
+			$data['indivisualstData'] = $this->Registration_model->get_indivisualstData($id);	
+			echo "<pre>";
+			print_r( $data['indivisualstData']);exit();
+			$data['student_regestration'] = 'student_updateform';
+			$this->load->view('layouts/main', $data );
 		}
 
 		public function acknoledgement()

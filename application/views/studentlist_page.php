@@ -20,9 +20,20 @@
                                     <tr>
                                         <th>Serial No</th>
                                         <th>Name</th>
-                                        <th>Username</th>
-                                        <th class="hidden-phone">E-mail address</th>
-                                        <th class="hidden-phone">Present address</th>
+                                        <th>Father's name</th>
+                                        <th>Mother's name</th>
+                                        <th>Organaization</th>
+                                        <th class="hidden-phone">Address</th>
+                                        <th class="hidden-phone">Address type</th>
+                                        <th class="hidden-phone">District</th>
+                                        <th class="hidden-phone">Upazilla</th>
+                                        <th class="hidden-phone">Post code</th>
+
+                                        <th class="hidden-phone">Exam Title</th>
+                                        <th class="hidden-phone">University</th>
+                                        <th class="hidden-phone">Subject</th>
+                                        <th class="hidden-phone">Result</th>
+                                        <th class="hidden-phone">GPA</th>
                                         <th class="hidden-phone">Status</th>
                                         <th class="hidden-phone">Action</th>
                                     </tr>
@@ -39,11 +50,22 @@
                                             <td><?php echo $i;?></td>
                                             <td> <?php echo $allstudent->student_name; ?></td>
                                             <td class="center hidden-phone"><?php echo $allstudent->father_name;?></td>
-                                            <td class="center hidden-phone"><?php echo $allstudent->email;?></td>
-                                            <td class="center hidden-phone"><?php echo $allstudent->emergency_contact_name;?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->mother_name;?></td>
+                                            <td><?php echo $allstudent->organization_id;?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->address;?></td>
+                                            <td><?php echo $allstudent->type;?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->district_code;?></td>
+                                            <td><?php echo $allstudent->upzilla_code;?></td>
+                                            <td><?php echo $allstudent->post_code;?></td>
+
+                                            <td><?php echo $allstudent->exam_id;?></td>
+                                            <td><?php echo $allstudent->university;?></td>
+                                            <td><?php echo $allstudent->group;?></td>
+                                            <td><?php echo $allstudent->result;?></td>
+                                            <td><?php echo $allstudent->gpa;?></td>
                                             <td>Active</td>
-                                            <td><a href="<?php echo base_url();?>registration/edituser_box/<?php echo $allstudent->id;?>"> Edit</a> 
-                                            | <a href="<?php echo base_url();?>registration/delete_user/<?php echo $allstudent->id;?>" onclick="return confirm('Are you sure want to delete ?')";>Delete</a></td>
+                                            <td><a href="<?php echo base_url();?>Registration/studentUpdate_form/<?php echo $allstudent->participant_id;?>"> Edit</a> 
+                                            | <a href="<?php echo base_url();?>registration/delete_user/<?php echo $allstudent->participant_id;?>" onclick="return confirm('Are you sure want to delete ?')";>Delete</a></td>
                                         </tr>
                                         <?php    
                                         }
