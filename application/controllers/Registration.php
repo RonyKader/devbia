@@ -166,4 +166,12 @@ class Registration extends CI_Controller
 			$dat = $query->result();
 			print_r( $dat ); 
 		}
+
+		public function fileupload()
+		{
+			$this->load->model( 'Registration_model' );
+			$data['acknoledgement_info'] = $this->Registration_model->fileUpload();
+			$data['acknoledgement'] = 'fileupload';
+			$this->load->view( 'layouts/main', $data );		
+		}
 }

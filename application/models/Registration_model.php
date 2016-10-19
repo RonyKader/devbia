@@ -229,4 +229,9 @@
 					return FALSE;
 				}
 			}
+
+			public function fileUpload()
+			{
+				
+			}
 	}
