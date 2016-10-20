@@ -168,10 +168,41 @@ class Registration extends CI_Controller
 		}
 
 		public function fileupload()
-		{
-			$this->load->model( 'Registration_model' );
-			$data['acknoledgement_info'] = $this->Registration_model->fileUpload();
+		{			
 			$data['acknoledgement'] = 'fileupload';
 			$this->load->view( 'layouts/main', $data );		
+		}
+
+		public function fileupload_do()
+		{
+			// echo "<pre>";
+			// print_r( $_POST );
+			$config['upload_path'] 		= './uploads/';
+			$config['allowed_types'] 	= 'jpg|jpeg|gif';
+			$config['encrypt_name'] 	= true;
+			$config['remove_spaces'] 	= true;
+
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload('file_image')) :
+				echo "Image Upload Fail";
+			else:
+				$image_details = $this->upload->data();	
+				// echo "<pre>";
+				// print_r( $image_details );
+				$saveImage = base_url().'uploads/'.$image_details['raw_name'].$image_details['file_ext'];
+				$this->load->model( 'Registration_model' );
+				$data = $this->Registration_model->fileUpload($saveImage);
+				if ( $data ) :
+					echo "Sucess fully Upload Image";
+				else:
+					echo "Sorry Not done";
+				endif;
+
+			endif;
+
+			
+			exit();
+			
 		}
 }

@@ -19,18 +19,33 @@
                                 $data = array(
                                     'name' => 'fileuploadfrom'
                                     );
-                                echo form_open_multipart('registration/fileupload',$data );
-                                $data = array(
-                                    'type' => 'file',
-                                    'name' => 'upload_image'
-                                    );
-                                echo form_upload( $data );
-                                $data = array(
-                                    'type'  =>  'submit',
-                                    'class' =>  'btn btn-primarry',
-                                    'value' =>  'Submit File'
-                                    );
-                                echo form_submit( $data );
+                                echo form_open_multipart('registration/fileupload_do',$data );
+                            ?>
+                            <div class="form-group">
+                                <label for="datatype1">Both <input type="checkbox" name="datatype[]" id="datatype1" value="0"></label>                                
+                                <label for="datatype2">Type Two <input type="checkbox" name="datatype[]" id="datatype2" value="1"></label>                                
+                                <label for="datatype3">Type Three <input type="checkbox" name="datatype[]" id="datatype3" value="2"></label>                                
+                            </div>
+                            <div class="form-group">
+                                <?php
+                                    $data = array(
+                                        'type' => 'file',
+                                        'name' => 'file_image'
+                                        );
+                                    echo form_upload( $data );
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php    
+                                    $data = array(
+                                        'type'  =>  'submit',
+                                        'class' =>  'btn btn-primarry',
+                                        'value' =>  'Submit File'
+                                        );
+                                    echo form_submit( $data );
+                                ?>
+                            </div>
+                            <?php    
                                 echo form_close();
 
                              ?>

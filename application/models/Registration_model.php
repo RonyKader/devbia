@@ -219,19 +219,24 @@
 				}
 
 				$result = $this->db->insert_batch( 'educational_qualification', $data2 );
-
-				if ( $result ) 
-				{
-					return TRUE;
-				}
-				else
-				{
-					return FALSE;
-				}
+				if ( $insert_query ) :
+					return true;
+				else:
+					return false;
+				endif;
 			}
 
-			public function fileUpload()
+			public function fileUpload( $imagedata )
 			{
-				
+				$data = array(
+					'file_image' => $imagedata
+					);
+				$insert_query = $this->db->insert( ' image_file', $data );
+				if ( $insert_query ) :
+					return true;
+				else:
+					return false;
+				endif;
+
 			}
 	}
