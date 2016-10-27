@@ -120,10 +120,40 @@ class Registration extends CI_Controller
 		$data['nationality_info'] 	  	=	$this->Registration_model->get_nationality();		
 		$data['educationlevel_info']  	=	$this->Registration_model->get_educationlevel();		
 		$data['university_info'] 	  	=	$this->Registration_model->get_university();		
-		$data['sponsoredby_info'] 	  	=	$this->Registration_model->get_sponsoredby();	
+		$data['sponsoredby_info'] 	  	=	$this->Registration_model->get_sponsoredby();
+
 		$data['indivisualstData'] 		=	$this->Registration_model->get_indivisualstData($id);
+		$data['indivisualstAddress'] 		=	$this->Registration_model->get_indivisualstAddress($id);
 		$data['student_regestration']	=	'studentDetailsPage';
 		$this->load->view('layouts/main', $data );
+	}
+
+	// Update Method For Student Basic Information
+	public function updateSutdentBasicInfo($id)
+	{
+		$this->load->model( 'Registration_model' );
+		$updateInfo	=	$this->Registration_model->updateBasicInfo($id);
+		if ( $updateInfo ) :
+			$this->session->set_flashdata( 'FlsMsg',$this->alert->success('You have successfully updated your information') );
+			redirect( 'Registration/studentDetails/'.$id );
+		else:
+			$this->session->set_flashdata( 'FlsMsg',$this->alert->danger('Sorry !Data updated process is fail') );
+			redirect( 'Registration/studentDetails/'.$id );
+		endif;
+	}
+
+	// Update Method For Student Basic Information
+	public function updateSutdentAddress($id)
+	{
+		$this->load->model( 'Registration_model' );
+		$updateInfo	=	$this->Registration_model->updateStudentAddress($id);
+		if ( $updateInfo ) :
+			$this->session->set_flashdata( 'FlsMsg',$this->alert->success('You have successfully updated your Address information') );
+			redirect( 'Registration/studentDetails/'.$id );
+		else:
+			$this->session->set_flashdata( 'FlsMsg',$this->alert->danger('Sorry !Data address updated process is fail') );
+			redirect( 'Registration/studentDetails/'.$id );
+		endif;
 	}
 
 	// View Method For Acknoledgement Section

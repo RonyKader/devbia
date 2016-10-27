@@ -5770,3 +5770,27 @@ select#session_month {
     border-bottom: 1px dotted #9c9c9c;
     padding-bottom: 22px;
 }
+.modal-dialog.updateaddress {
+  width: 60%;
+}
+.studentInfo ul li span {
+    font-weight: bold;
+    line-height: 23px;
+    font-family: arial;
+}
+.studentInfo ul {
+    padding: 0;
+}
+.contactwrapper.clearfix {
+    padding-left: 40px;
+}
+.contactwrapper.clearfix h2 {
+    font-size: 30px;
+    font-style: italic;
+    padding-bottom: 15px;
+}
+.contactwrapper.clearfix .btn-primary {
+    margin-top: 20px !important;
+    display: block;
+    margin-bottom: 22px;
+}
