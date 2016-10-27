@@ -5765,3 +5765,8 @@ select#session_month {
 .danger > p {
     color: red !important; 
 }
+
+.contactwrapper.clearfix {
+    border-bottom: 1px dotted #9c9c9c;
+    padding-bottom: 22px;
+}

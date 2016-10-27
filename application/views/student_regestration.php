@@ -86,7 +86,8 @@
                         'name' => 'mother_name',
                         'id' => 'mother_name',
                         'class' => 'form-control',
-                        'placeholder' => 'Mother\'s Name'                        
+                        'placeholder' => 'Mother\'s Name',
+                        'value'    => set_value('mother_name')                        
                     );
                   echo form_input( $data );
                  ?>
@@ -150,7 +151,9 @@
                                 'name' => 'registration_fee',
                                 'id'   => 'registration_fee',
                                 'class' => 'form-control',
-                                'placeholder' => '1200 tk'                        
+                                'placeholder' => '1200 tk',   
+                                'value'    => set_value('registration_fee')                        
+
                             );
                           echo form_input( $data );
                          ?>
@@ -191,7 +194,9 @@
                                     'name' => 'self_organization',
                                     'id'   => 'self_organization',
                                     'class' => 'form-control',
-                                    'placeholder' => 'Organization'                        
+                                    'placeholder' => 'Organization',
+                                    'value'    => set_value('self_organization')                     
+
                                 );
                               echo form_input( $data );
                              ?>
@@ -204,7 +209,8 @@
                                     'name' => 'total_experience',
                                     'id' => 'total_experience',
                                     'class' => 'form-control',
-                                    'placeholder' => 'Total Experience'                        
+                                    'placeholder' => 'Total Experience',
+                                    'value'    => set_value('total_experience')                         
                                 );
                               echo form_input( $data );
                              ?>
@@ -237,7 +243,8 @@
                                     'name' => 'current_employeement',
                                     'id'   => 'current_employeement',
                                     'class' => 'form-control',
-                                    'placeholder' => 'Current Employeement'                        
+                                    'placeholder' => 'Current Employeement',
+                                    'value'    => set_value('current_employeement')                         
                                 );
                               echo form_input( $data );
                              ?>
@@ -251,7 +258,8 @@
                                     'id'   => 'current_employeement_address',
                                     'class' => 'form-control',
                                     'rows' => 4,
-                                    'placeholder' => 'Current Employement Address'                        
+                                    'placeholder' => 'Current Employement Address',
+                                    'value'    => set_value('current_employeement_address')                        
                                 );
                               echo form_textarea( $data );
                              ?>
@@ -275,7 +283,8 @@
                                     'name' => 'date_of_birth',
                                     'id'   => 'date_of_birth',
                                     'class'=> 'form-control',
-                                    'placeholder' => 'Date of Birth'
+                                    'placeholder' => 'Date of Birth',
+                                    'value'    => set_value('date_of_birth')
                                     );
                                   echo form_input( $data );
                                  ?>
@@ -288,7 +297,8 @@
                                         'name' => 'emergency_contact_name',
                                         'id'   => 'emergency_contact_name',
                                         'class' => 'form-control',
-                                        'placeholder' => 'Emergency Contact Name'                        
+                                        'placeholder' => 'Emergency Contact Name',
+                                        'value'    => set_value('emergency_contact_name')                        
                                     );
                                   echo form_input( $data );
                                  ?>
@@ -302,7 +312,8 @@
                                         'name' => 'emergency_contact_no',
                                         'id'   => 'emergency_contact_no',
                                         'class' => 'form-control',
-                                        'placeholder' => 'Emergency Contact No'                        
+                                        'placeholder' => 'Emergency Contact No',
+                                        'value'    => set_value('emergency_contact_no')                         
                                     );
                                   echo form_input( $data );
                                  ?>
@@ -343,7 +354,8 @@
                                         'name' => 'mobile_no',
                                         'id'   => 'mobile_no',
                                         'class' => 'form-control',
-                                        'placeholder' => 'Mobile No'                        
+                                        'placeholder' => 'Mobile No',
+                                        'value'    => set_value('mobile_no')                        
                                     );
                                   echo form_input( $data );
                                  ?>
@@ -356,7 +368,8 @@
                                         'name' => 'email',
                                         'id' => 'email',
                                         'class' => 'form-control',
-                                        'placeholder' => 'E-mail address'                        
+                                        'placeholder' => 'E-mail address',
+                                        'value'    => set_value('email')                        
                                     );
                                   echo form_input( $data );
                                  ?>                              
@@ -416,7 +429,8 @@
                                         'name' => 'nationalid',
                                         'id'   => 'nationalid',
                                         'class' => 'form-control',
-                                        'placeholder' => 'National ID'                        
+                                        'placeholder' => 'National ID',
+                                        'value'    => set_value('nationalid')                          
                                     );
                                   echo form_input( $data );
                                  ?>                                    
@@ -445,7 +459,8 @@
                                                 'cols' => 0,
                                                 'rows' => 0,
                                                 'class' => 'form-control text-add',
-                                                'placeholder' => 'Address'                        
+                                                'placeholder' => 'Address',
+                                                'value'    => set_value('address[]')                        
                                             );
                                           echo form_textarea( $data );
                                          ?> 
@@ -508,7 +523,8 @@
                                                 'name' => 'post_code[]',
                                                 'id'   => 'post_code',
                                                 'class' => 'form-control',
-                                                'placeholder' => 'Post Code'                       
+                                                'placeholder' => 'Post Code',
+                                                'value'    => set_value('post_code[]')                       
                                             );
                                           echo form_input( $data );
                                          ?> 
@@ -576,7 +592,8 @@
                                                     'name' => 'group[]',
                                                     'id'   => 'group',
                                                     'class' => 'form-control',
-                                                    'placeholder' => 'Group/Subject'                      
+                                                    'placeholder' => 'Group/Subject',
+                                                    'value'    => set_value('group[]')                      
                                                 );
                                               echo form_input( $data );
                                              ?>
@@ -604,7 +621,8 @@
                                                 'type' => 'text',
                                                 'name' => 'gpa[]',
                                                 'class' => 'form-control',
-                                                'placeholder' => 'GPA/CGPA'                  
+                                                'placeholder' => 'GPA/CGPA',
+                                                'value'    => set_value('gpa[]')                  
                                             );
                                           echo form_input( $data );
                                          ?>

@@ -64,10 +64,8 @@
 
 			public function get_indivisualstData( $id )
 			{
-				$this->db->select('student.*,address.*,educational_qualification.*');
+				$this->db->select('*');
 				$this->db->from('student');
-				$this->db->join('address','student.participant_id=address.participant_id');
-				$this->db->join('educational_qualification','student.participant_id=educational_qualification.participant_id');
 				$this->db->where( array( 'student.participant_id' => $id));
 				$query = $this->db->get();
 				return $query->result();
@@ -135,10 +133,10 @@
 			public function registration_process()
 			{
 
-				$participant_id ='';
+				
 				$query = $this->db->query( "SELECT MAX(participant_id)+1 as Mvalue FROM student" );		
 				foreach ($query->result() as $participant_idd) {
-					$participant_id.=$participant_idd->Mvalue;
+					$participant_id = $participant_idd->Mvalue;
 				}
 				$participant_id;
 				$data = array(
@@ -173,14 +171,15 @@
 
 				$result = $this->db->insert( 'student', $data );
 				
+				
 				$address 		= $this->input->post( 'address' );
 				$district_code 	= $this->input->post( 'district_code' );
 				$upzilla_code 	= $this->input->post( 'upzilla_code' );
 				$post_office 	= $this->input->post( 'post_office' );
 				$post_code 		= $this->input->post( 'post_code' );
-				$count 			= count( $address );		
+				$count 			= count( $address );
+						
 				$data1 = array();
-
 				for ($i=0; $i < $count; $i++) 
 				{ 
 					$data1[$i] = array(
@@ -213,30 +212,39 @@
 						'gpa' 			=> $gpa[$i],
 						'participant_id' => $participant_id
 						);
-					
-					// echo "<pre>";
-					// print_r( $data1[$i]	);
 				}
 
 				$result = $this->db->insert_batch( 'educational_qualification', $data2 );
-				if ( $insert_query ) :
+				// echo $this->db->last_query(); exit();
+				if ( $result ) :
 					return true;
 				else:
 					return false;
 				endif;
 			}
 
-			public function fileUpload( $imagedata )
-			{
-				$data = array(
-					'file_image' => $imagedata
-					);
-				$insert_query = $this->db->insert( ' image_file', $data );
-				if ( $insert_query ) :
-					return true;
-				else:
-					return false;
-				endif;
+			// public function fileUpload( $imagedata )
+			// {
+			// 	$data_t	= $this->input->post('datatype');
+			// 	if ( count( $data_t ) === 3 || count( $data_t ) === 2 ) {
+			// 		$get_da = 0;
+			// 	}
+			// 	else
+			// 	{
+			// 		$get_da = $data_t[0];
+			// 	}
+					
+			// 		echo $get_da; exit();			
 
-			}
+			// 	$data = array(
+			// 		'file_image' => $imagedata
+			// 		);
+			// 	$insert_query = $this->db->insert( ' image_file', $data );
+			// 	if ( $insert_query ) :
+			// 		return true;
+			// 	else:
+			// 		return false;
+			// 	endif;
+
+			// }
 	}

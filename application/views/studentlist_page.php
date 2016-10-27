@@ -64,7 +64,7 @@
                                             <td><?php echo $allstudent->result;?></td>
                                             <td><?php echo $allstudent->gpa;?></td>
                                             <td>Active</td>
-                                            <td><a href="<?php echo base_url();?>Registration/studentUpdate_form/<?php echo $allstudent->participant_id;?>"> Edit</a> 
+                                            <td><a href="<?php echo base_url();?>Registration/studentDetails/<?php echo $allstudent->participant_id;?>">Details</a> 
                                             | <a href="<?php echo base_url();?>registration/delete_user/<?php echo $allstudent->participant_id;?>" onclick="return confirm('Are you sure want to delete ?')";>Delete</a></td>
                                         </tr>
                                         <?php    

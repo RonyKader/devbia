@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Admin_auth extends CI_Controller {
 
 	public function index()
@@ -8,19 +7,22 @@ class Admin_auth extends CI_Controller {
 		$this->load->view('login_form');
 	}
 
+	// View Method For Dashaborad Page
 	public function dashboard()
 	{
 		$data['dashboard'] = 'dashboard_page';
 		$this->load->view( 'layouts/main', $data );
 	}
 
+	//Login Access Method For User Login Process 
 	public function admin_login()
 	{
 		$this->form_validation->set_rules( 'username', 'username', 'trim|required');
 		$this->form_validation->set_rules( 'password', 'Password', 'trim|required');
 
-		if ($this->form_validation->run() == FALSE) {
-			redirect( 'admin_auth?Please Try with valid access' );
+		if ($this->form_validation->run() == FALSE) 
+		{
+			self::index();
 		}
 		else 
 		{
@@ -30,7 +32,8 @@ class Admin_auth extends CI_Controller {
 			if ( $result ) 
 			{
 				redirect( 'admin_auth/dashboard' );
-			}else
+			}
+			else
 			{
 				$this->session->set_flashdata( 'errorinfo', 'Please Try with valid email and password' );
 				redirect(base_url());
@@ -38,7 +41,7 @@ class Admin_auth extends CI_Controller {
 		}
 	}
 
-
+	// View Method For Get User Information List
 	public function userlist()
 	{
 		$this->load->model( 'auth_model' );
@@ -47,7 +50,7 @@ class Admin_auth extends CI_Controller {
 		$this->load->view( 'layouts/main', $data );	
 	}
 
-
+	// Logout Process Method
 	public function logout()
 	{		
 		$this->session->unset_userdata('logininfo');
@@ -55,7 +58,7 @@ class Admin_auth extends CI_Controller {
 		redirect( base_url() );		
 	}
 
-
+	// View Method For Edit User Section
 	public function edituser_box( $id = NULL )
 	{
 		$this->load->model( 'auth_model' );
@@ -64,7 +67,7 @@ class Admin_auth extends CI_Controller {
 		$this->load->view( 'layouts/main',$data );
 	}
 
-
+	// Update Method For User Information
 	public function update_user( $id = NULL )
 	{
 		$this->load->model( 'auth_model' );
@@ -79,7 +82,7 @@ class Admin_auth extends CI_Controller {
 		}
 	}
 
-
+	// Delete Method Of User Information
 	public function delete_user( $id = NULL )
 	{
 		$this->load->model( 'auth_model' );
