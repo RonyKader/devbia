@@ -21,15 +21,7 @@
                                         <th>Serial No</th>
                                         <th>Name</th>
                                         <th>Father's name</th>
-                                        <th>Mother's name</th>
-                                        <th>Organaization</th>
-                                        <th class="hidden-phone">Address</th>
-                                        <th class="hidden-phone">Address type</th>
-                                        <th class="hidden-phone">District</th>
-                                        <th class="hidden-phone">Upazilla</th>
-                                        <th class="hidden-phone">Post code</th>
-
-                                        <th class="hidden-phone">Exam Title</th>
+                                        <th>Mother's name</th>                                        
                                         <th class="hidden-phone">University</th>
                                         <th class="hidden-phone">Subject</th>
                                         <th class="hidden-phone">Result</th>
@@ -50,15 +42,7 @@
                                             <td><?php echo $i;?></td>
                                             <td> <?php echo $allstudent->student_name; ?></td>
                                             <td class="center hidden-phone"><?php echo $allstudent->father_name;?></td>
-                                            <td class="center hidden-phone"><?php echo $allstudent->mother_name;?></td>
-                                            <td><?php echo $allstudent->organization_id;?></td>
-                                            <td class="center hidden-phone"><?php echo $allstudent->address;?></td>
-                                            <td><?php echo $allstudent->type;?></td>
-                                            <td class="center hidden-phone"><?php echo $allstudent->district_code;?></td>
-                                            <td><?php echo $allstudent->upzilla_code;?></td>
-                                            <td><?php echo $allstudent->post_code;?></td>
-
-                                            <td><?php echo $allstudent->exam_id;?></td>
+                                            <td class="center hidden-phone"><?php echo $allstudent->mother_name;?></td>                                    
                                             <td><?php echo $allstudent->university;?></td>
                                             <td><?php echo $allstudent->group;?></td>
                                             <td><?php echo $allstudent->result;?></td>
