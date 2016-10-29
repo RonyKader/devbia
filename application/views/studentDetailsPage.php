@@ -487,3 +487,72 @@
         </div>
     </section>
 </section>        
+<script>
+    // Ajax Function For Get Address Information
+    function findUpazilla(id,key)
+    {
+        if( id != '' )
+        {
+            $('#upazilla_id'+key).val('');
+            $.ajax(
+            {
+                type: "POST",
+                dataType: "JSON",
+                url: "<?=base_url('registration/upazillaDataAjax');?>",
+                data: { district_id:id },
+                success: function(data)
+                {
+                    var options = '<option value=""> Select Upazilla</option>';
+                    for(x=0; x<data.length; x++)
+                    {
+                        options += '<option value="'+data[x].upzilla_code+'">'+data[x].upzilla_name+'</option>';
+                    }
+                    $( '#upazilla_id'+key ).html(options);
+                },
+                error: function()
+                {
+                  alert('Please Select District.');
+                }
+            });
+        }
+        else
+        {
+            alert('Please Select District.');
+        }
+    }
+
+
+    // Ajax Function For Get University Info
+    function finduniversity(id,key)
+    {
+        if( id != '' )
+        {
+            $('#university'+key).val('');
+                $.ajax(
+                {
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "<?=base_url('registration/universityDataAjax');?>",
+                    data: { type:id },
+
+                    success: function(data)
+                    {
+                        var options = '<option value=""> Select Board/University</option>';
+                        for(x=0; x<data.length; x++)
+                        {
+                            options += '<option value="'+data[x].name+'">'+data[x].name+'</option>';
+                        }
+                        $( '#university'+key ).html(options);
+                    },
+                    error: function()
+                    {
+                    alert('Please Select Exam name.');
+                    }
+                });
+        }
+        else
+        {
+            alert('Please Select District.');
+        }
+    }
+</script>
