@@ -113,24 +113,22 @@ class Registration_model extends CI_Model
 	}
 
 	// Update Method For Student Basic Information
-	public function updateStudentAddress($id)
+	public function updateStudentAddress($participant_id)
 	{
-		$address		=	$this->input->post('address');
-		$count	=	count( $address );
-		$data = array();
-		for ($i=0; $i < $count; $i++) 
-		{ 
-			$data1[$i] = array(
-				'address'	=>	$address[$i]
-				);
+		$id			=	$this->input->post('id');
+		$address	=	$this->input->post('address');
+		$count		=	count( $address );
 
-		}
-		
-		$this->db->where( array('participant_id'=>$id) );
+		$data = array();
+		for ($i=0; $i < $count; $i++) :		
+			$data[$i] = array(
+				'address'	=>	$address[$i],
+				'id'		=> $id[$i]
+			);
+		endfor;
 
 		$data 			=	$this->security->xss_clean( $data );
-		$updateResult 	=	$this->db->update_batch( 'address', $data,'address' );
-		echo $this->db->last_query(); exit();
+		$updateResult 	=	$this->db->update_batch( 'address', $data,'id' );
 		if ( $updateResult ) :
 			return true;
 		else:
@@ -166,11 +164,8 @@ class Registration_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('education_level');
 		$query = $this->db->get();
-
-		if ( $query ) 
-		{
-			return $query->result();
-		}
+		return $query->result();
+		
 	}
 
 	// View Method For Get Universit Info
@@ -249,27 +244,24 @@ class Registration_model extends CI_Model
 		$count 			= count( $address );
 				
 		$data1 = array();
-		for ($i=0; $i < $count; $i++) 
-		{ 
-			$data1[$i] = array(
-				'address' 		=> $address[$i],
-				'district_code' => $district_code[$i],
-				'upzilla_code' 	=> $upzilla_code[$i],				
-				'post_code' 	=> $post_code[$i],
-				'participant_id' => $participant_id
+		for ($i=0; $i < $count; $i++) :
+				$data1[$i] = array(
+					'address'		=>	$address[$i],
+					'district_code'	=>	$district_code[$i],
+					'upzilla_code' 	=>	$upzilla_code[$i],				
+					'post_code' 	=>	$post_code[$i],
+					'participant_id'=>	$participant_id
 				);
+		endfor;
+		$data1 	=	$this->security->xss_clean( $data1 );		
+		$result =	$this->db->insert_batch( 'address', $data1 );
 
-		}
-		$data1 	= $this->security->xss_clean( $data1 );		
-		$result = $this->db->insert_batch( 'address', $data1 );
-
-
-		$exam_id 		= $this->input->post( 'exam_id' );
-		$university 	= $this->input->post( 'university' );
-		$group 			= $this->input->post( 'group' );
-		$result 		= $this->input->post( 'result' );
-		$gpa 			= $this->input->post( 'gpa' );
-		$count 			= count( $university );
+		$exam_id 	=	$this->input->post( 'exam_id' );
+		$university =	$this->input->post( 'university' );
+		$group 		=	$this->input->post( 'group' );
+		$result 	=	$this->input->post( 'result' );
+		$gpa 		=	$this->input->post( 'gpa' );
+		$count 		=	count( $university );
 
 		$data2 = array();
 		for ($i=0; $i < $count; $i++) 
@@ -285,7 +277,6 @@ class Registration_model extends CI_Model
 		}
 		$data2 	= $this->security->xss_clean( $data2 );
 		$result = $this->db->insert_batch( 'educational_qualification', $data2 );
-		// echo $this->db->last_query(); exit();
 		if ( $result ) :
 			return true;
 		else:

@@ -213,6 +213,7 @@
                                 {;?>
                               <div id="rem" class="main-wrap clearfix">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <input type="hidden" name="id[]" value="<?php echo $indivisualstAddressList->id;?>">
                                         <div class="form-group">
                                             <?php echo form_error('address[]');?>
                                             <?php 
