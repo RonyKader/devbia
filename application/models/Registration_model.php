@@ -2,6 +2,7 @@
 	
 class Registration_model extends CI_Model 
 {
+	// View Method For Get Course Info
 	public function get_course()
 	{	
 		$this->db->select('*');
@@ -12,6 +13,7 @@ class Registration_model extends CI_Model
 		return $query->result();
 	}
 
+	// View Method For Get Designation Info
 	public function get_designation()
 	{
 		$this->db->select('*');
@@ -22,6 +24,7 @@ class Registration_model extends CI_Model
 		return $query->result();
 	}
 
+	// View Method For All District Info
 	public function get_district()
 	{
 		$this->db->select('*');
@@ -32,6 +35,7 @@ class Registration_model extends CI_Model
 		return $query->result();
 	}
 
+	// View Method For Upzilla Information
 	public function get_upzilla( $district=NULL )
 	{
 		$this->db->select('*');
@@ -43,6 +47,7 @@ class Registration_model extends CI_Model
 
 	}
 
+	// View Method For Student All Information
 	public function studentListInfo()
 	{
 		$this->db->select('st.*,ad.*,edq.*');
@@ -53,6 +58,7 @@ class Registration_model extends CI_Model
 		return $query->result();
 	}
 
+	// View Method For District & Address Information
 	public function disttInfo()
 	{
 		$this->db->select('ddu.*,add.district_code');
@@ -142,7 +148,7 @@ class Registration_model extends CI_Model
 
     }
    
-
+    // View Method For Get Nationality Info
 	public function get_nationality()
 	{
 		$this->db->select('*');
@@ -154,6 +160,7 @@ class Registration_model extends CI_Model
 		}
 	}
 
+	// View Method For Get Education Level Info
 	public function get_educationlevel()
 	{	
 		$this->db->select('*');
@@ -166,6 +173,7 @@ class Registration_model extends CI_Model
 		}
 	}
 
+	// View Method For Get Universit Info
 	public function get_university( $type=NULL )
 	{
 		$this->db->select('*');
@@ -179,6 +187,7 @@ class Registration_model extends CI_Model
 		}
 	}
 
+	// View Method For Get Sponsor By Info
 	public function get_sponsoredby()
 	{
 		$this->db->select('*');
@@ -190,10 +199,10 @@ class Registration_model extends CI_Model
 			return $query->result();
 		}
 	}
-	public function registration_process()
-	{
 
-		
+	// Insert Method For Student Registration Process
+	public function registration_process()
+	{		
 		$query = $this->db->query( "SELECT MAX(participant_id)+1 as Mvalue FROM student" );		
 		foreach ($query->result() as $participant_idd) {
 			$participant_id = $participant_idd->Mvalue;
