@@ -29,9 +29,7 @@
                                 <li><span>Email Address : </span><?php echo $indivisualstDataList->email; ?></li>
                                 <li><span>Gender : </span><?php echo $indivisualstDataList->gender; ?> </li>
                                 <li><span>Emmergency Con.Person : </span><?php echo $indivisualstDataList->emergency_contact_name; ?></li>
-                                <li><span>Emergency Mobile : </span><?php echo $indivisualstDataList->emergency_contact_no; ?></li>
-
-                                
+                                <li><span>Emergency Mobile : </span><?php echo $indivisualstDataList->emergency_contact_no; ?></li>                                
                             </ul>
                         </div>
                     </div>
@@ -554,5 +552,37 @@
         {
             alert('Please Select District.');
         }
+    }
+</script>
+<script>
+    function findUpazilla(id,key){
+
+    if( id != '' )
+    {
+        $('#upazilla_id'+key).val('');
+          $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: "<?=base_url('registration/upazillaDataAjax');?>",
+            data: { district_id:id },
+            success: function(data)
+            {
+              var options = '<option value=""> Select Upazilla</option>';
+              for(x=0; x<data.length; x++)
+              {
+                options += '<option value="'+data[x].upzilla_code+'">'+data[x].upzilla_name+'</option>';
+              }
+              $( '#upazilla_id'+key ).html(options);
+            },
+            error: function()
+            {
+              alert('Please Select District.');
+            }
+          });
+      }
+      else
+      {
+        alert('Please Select District.');
+      }
     }
 </script>
