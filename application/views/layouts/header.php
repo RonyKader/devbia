@@ -12,7 +12,7 @@
     <meta http-equiv=”X-UA-Compatible” content=”IE=9”>
 
     <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.html">
-    <title>Bollychicks | Admin</title>
+    <title>Dev Bia | Development</title>
     <!--Core CSS -->
     <link href="<?php echo base_url();?>assets/bs3/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/js/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">

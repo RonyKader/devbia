@@ -16,6 +16,8 @@
                 <?php 
                 if ( $indivisualstData ) :                    
                     foreach ( $indivisualstData as $indivisualstDataList ) 
+                    //     echo "<pre>";
+                    // print_r($indivisualstDataList);
                     {;?>                     
                     
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -135,6 +137,74 @@
                                     ?>
                                 </div>
 
+                                <div class="form-group">
+                                <h4 class="modal-title">Admit Course Information *</h4>
+                                <?php echo form_error('session_month');?>
+                                <?php echo form_error('session_year');?>
+                                <select name="session_month" id="session_month" class="custom-session">
+                                    <option disabled="disabled">Month</option>
+                                    <option <?php if( $indivisualstDataList->session_month == "May"){ echo "Selected"; } ?> value="May">May</option>
+                                    <option <?php if( $indivisualstDataList->session_month == "Oct"){ echo "Selected"; } ?> value="Oct">Oct</option>
+                                </select>
+                                <select name="session_year" id="session_year" class="custom-session">
+                                    <option disabled="disabled">Year</option>
+                                    <option selected="true" value="<?php echo $indivisualstDataList->session_year;?>"><?php echo  $indivisualstDataList->session_year;?></option>
+                                </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <?php echo form_error('course_id');?>
+                                    <select name="course_id" id="course_id" class="form-control">
+                                        <option selected="true" disabled="disabled">Select a course</option>
+                                        <?php 
+                                           if ( $course_name ) 
+                                           {
+                                             foreach ($course_name as $coursename ) 
+                                             {
+                                              ?>
+                                               <option value="<?php echo $coursename->id;?>"><?php echo $coursename->course_name;?></option>
+                                              <?php
+                                             }
+                                           }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                  <?php echo form_error('registration_fee');?>
+                                    <?php 
+                                      $data = array(
+                                            'type'          => 'text',
+                                            'name'          => 'registration_fee',
+                                            'id'            => 'registration_fee',
+                                            'class'         => 'form-control',
+                                            'placeholder'   => '1200 tk',   
+                                            'value'         => $indivisualstDataList->registration_fee                        
+
+                                        );
+                                      echo form_input( $data );
+                                     ?>
+                                </div>
+
+                                <div class="form-group">
+                                    <?php echo form_error('organization_id');?>
+                                    <select name="organization_id" id="sponsored" class="form-control">
+                                        <option selected="true" disabled="disabled">Sponsored By</option>
+                                        <?php 
+                                           if ( $sponsoredby_info ) 
+                                           {
+                                             foreach ($sponsoredby_info as $sponsored ) 
+                                             {
+                                              ?>
+                                               <option value="<?php echo $sponsored->id;?>"><?php echo $sponsored->organization_name;?></option>
+                                              <?php
+                                             }
+                                           }
+                                        ?>
+                                    </select>
+                                </div>
+
+
                                 <div class="form-group"> 
                                     <?php 
                                         $data = array(
@@ -146,6 +216,7 @@
                                         echo form_input( $data );
                                     ?>
                                 </div>
+
 
                                 <?php echo form_close(); ?>
                               </div>                                  
